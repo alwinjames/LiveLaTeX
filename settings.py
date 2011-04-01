@@ -1,4 +1,4 @@
-# Django settings for LiveLaTeX project.
+# Django settings for livelatex project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -11,8 +11,8 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'test',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -43,7 +43,7 @@ USE_I18N = True
 # calendars according to the current locale
 USE_L10N = True
 
-# Absolute path to the directory that holds media.
+# Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = ''
 
@@ -58,7 +58,7 @@ MEDIA_URL = ''
 ADMIN_MEDIA_PREFIX = '/media/'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '9tkun$$!btvvm1fp-+8#*cb#lz+lr%u++0za=51f4mk+qfixwa'
+SECRET_KEY = 'w$ef@=(01^%wtbh13u0(*m9lgwe!&xusd4m+6np&9xmd2ck+24'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -75,7 +75,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'LiveLaTeX.urls'
+ROOT_URLCONF = 'livelatex.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -89,31 +89,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+	'livelatex.file',
+	'livelatex.published',
+	'livelatex.projects',
+	'livelatex.usr',
+    	'livelatex.filelist',
+	# Uncomment the next line to enable the admin:
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
-
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler'
-        }
-    },
-    'loggers': {
-        'django.request':{
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-    }
-}
