@@ -1,10 +1,14 @@
+import datetime
 from django.db import models
+from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
 
 class Project(models.Model):
-	user_id = models.IntegerField()
-	project_name = models.CharField(max_length=30)
-	project_id = models.IntegerField()
+	user = models.ForeignKey(User, verbose_name=_('Username'))
+	proj_name = models.CharField(_('Project Name'), max_length=30)
+	proj_id = models.AutoField(_('Project ID'), primary_key=True)
+	added = models.DateTimeField(_('Added On'), auto_now=True)
 
 def __unicode__(self):
-	return u'%s %s' %(self.first_name,self.last_name)
+	return self.proj_name
 
